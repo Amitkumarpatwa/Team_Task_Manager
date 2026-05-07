@@ -1,0 +1,337 @@
+:root {
+  /* Clean, readable default fonts */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #2c3e50;         /* Slightly softer dark gray for text */
+  background: #f8fafc;    /* Very light gray/blue background */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased; /* Crisp text rendering on macOS */
+}
+
+/* App wrapper ensures full vertical height */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation bar */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #ffffff;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #3b82f6, #8b5cf6) 1; /* Colorful top accent */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.top-right {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Main content wrapper */
+.main {
+  flex: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem; /* Give breathing room around content */
+}
+
+/* Reusable card component for layout containers */
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.card.narrow {
+  max-width: 400px;
+  margin: 60px auto;
+}
+
+/* Grid layout, handles responsive columns */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr 1fr; /* Switch to 2 columns on larger screens */
+  }
+  .span2 {
+    grid-column: span 2;
+  }
+}
+
+/* Simple vertical stack for form fields or spacing */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stack.end {
+  align-items: flex-end;
+}
+
+/* Unified form styles */
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s; /* Smooth focus states */
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  background: #3b82f6;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s; /* Subtle hover effects */
+}
+
+.btn:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98); /* Slight click feedback */
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn.ghost {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.btn.ghost:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.btn.danger {
+  background: #ef4444;
+}
+
+.btn.danger:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+.btn.link {
+  background: transparent;
+  color: #3b82f6;
+  padding: 0;
+}
+
+.btn.link:hover {
+  text-decoration: underline;
+  background: transparent;
+}
+
+.linkish {
+  border: 0;
+  background: transparent;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1e293b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  color: #3b82f6;
+  font-size: 20px;
+}
+
+/* Text helpers */
+.muted {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Dashboard or custom sections */
+.stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.big {
+  font-size: 32px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Lists and list items */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.list.tight li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.list.tight li:last-child {
+  border-bottom: none;
+}
+
+/* Clickable list row (like for Projects) */
+.rowbtn {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensures content aligns cleanly */
+  gap: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.rowbtn:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+/* Layout helpers */
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.row.spread {
+  justify-content: space-between;
+}
+
+/* Individual Task styling */
+.task {
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 4px solid #cbd5e1; /* Default status color indicator */
+  transition: transform 0.2s, box-shadow 0.2s, border-left-color 0.2s;
+}
+
+.task:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Task Status Colors */
+.task.status-todo { border-left-color: #94a3b8; }
+.task.status-in-progress { border-left-color: #eab308; background: #fefce8; }
+.task.status-done { border-left-color: #22c55e; background: #f0fdf4; opacity: 0.85; }
+.task.status-done .title { text-decoration: line-through; color: #64748b; }
+
+@media (min-width: 600px) {
+  .task {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Role / Status Badge */
+.pill {
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Specific Pill Colors for Roles */
+.pill.role-admin {
+  background: #fee2e2; /* Light red */
+  color: #b91c1c;      /* Deep red */
+}
+
+.pill.role-member {
+  background: #e0f2fe; /* Light blue */
+  color: #0369a1;      /* Deep blue */
+}
+
+.small {
+  font-size: 12px;
+}
+
+.mt {
+  margin-top: 16px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 12px;
+  color: #0f172a;
+}
