@@ -16,7 +16,7 @@ function createApp() {
   app.use('/api', routes);
 
   // one-box production: serve CRA/Vite build from ../client/dist
-  if (process.env.SERVE_STATIC === '1') {
+  if (process.env.SERVE_STATIC === '1' || process.env.NODE_ENV === 'production') {
     const clientDir = path.join(__dirname, '..', 'client', 'dist');
     app.use(express.static(clientDir));
     app.get(/^\/(?!api).*/, (_req, res) => {
